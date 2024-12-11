@@ -3,40 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="claculator.css">
-    <script src="cla.js"></script>
+    <title>Timer</title>
+    <link rel="stylesheet" href="card.css">
+    <script>
+        let display; // Variable to store the interval reference
+
+        function showtime() {
+            let t = new Date();
+            let time = t.toLocaleTimeString();
+            document.getElementById("int").value = time; // Update the input field
+        }
+
+        function start() {
+            // Start updating the time every second
+            display = setInterval(showtime, 1000);
+        }
+
+        function action() {
+            // Stop updating the time
+            clearInterval(display);
+        }
+    </script>
 </head>
 <body>
     <div class="container">
-        <div class="claculator">
-
-            <input type="text" class="value">
-
-            <button class="num clear"  data-button="c"><i>C</i></button>
-            <button class="num"  data-button="CE"><i>CE</i></button>
-            <button class="num"  data-button="/"><i>/</i></button>
-            <button class="num"  data-button="*"><i>*</i></button>
-
-            <button class="num"  data-button="9"><i>9</i></button>
-            <button class="num"  data-button="8"><i>8</i></button>
-            <button class="num"  data-button="7"><i>7</i></button>
-            <button class="num"  data-button="-"><i>-</i></button>
-                
-            <button class="num"  data-button="6"><i>6</i></button>
-            <button class="num"  data-button="5"><i>5</i></button>
-            <button class="num"  data-button="4"><i>4</i></button>
-            <button class="num"  data-button="+"><i>+</i></button>
-
-            <button class="num"  data-button="3"><i>3</i></button>
-            <button class="num"  data-button="2"><i>2</i></button>
-            <button class="num"  data-button="1"><i>1</i></button>
-            <button class="num equl"  data-button="="><i>=</i></button>
-  
-            
-            <button class="num"  data-button="0"><i>0</i></button>
-            <button class="num"  data-button="00"><i>00</i></button>
-            <button class="num"  data-button="."><i>.</i></button>
+        <div class="box">
+            <input type="text" id="int" value="00:00:00" readonly>
+            <button id="start" onclick="start()">Start</button>
+            <button id="stop" onclick="action()">Stop</button>
         </div>
     </div>
 </body>
